@@ -54,9 +54,12 @@ public class LinkedList {
 			throw new IllegalArgumentException(
 					"index must be between 0 and size");
 		}
+		if (first == null){
+			return null;
+		}
 		int counter = 0;
 		Node holder = first;
-		while (counter < index) {
+		while (counter < index && holder.next != null) {
 			holder = holder.next;
 		}
 		return holder;
@@ -113,6 +116,10 @@ public class LinkedList {
 	 */
 	public void addLast(MemoryBlock block) {
 		Node newNode = new Node(block);
+		if (last == null) {
+			last = newNode;
+			first = last;
+		}
 		last.next = newNode;
 		last = newNode;
 		size++;
