@@ -50,7 +50,7 @@ public class LinkedList {
 	 * @return the node at the given index
 	 */		
 	public Node getNode(int index) {
-		if (index < 0 || index >= size) {
+		if (index < 0 || index > size) {
 			throw new IllegalArgumentException(
 					"index must be between 0 and size");
 		}
@@ -153,9 +153,12 @@ public class LinkedList {
 	 *         if index is negative or greater than or equal to size
 	 */
 	public MemoryBlock getBlock(int index) {
-		if (index < 0 || index >= size) {
+		if (index < 0 || index > size) {
 			throw new IllegalArgumentException(
 					"index must be between 0 and size");
+		}
+		if (getNode(index) == null) {
+			return null;
 		}
 		return getNode(index).block;
 	}	
@@ -242,5 +245,37 @@ public class LinkedList {
 			linkedList = linkedList  + getNode(i).toString();
 		}
 		return linkedList;
+	}
+
+	public static void main(String[] args) {
+		MemoryBlock[] memoryBlockList = new MemoryBlock[20];
+        for (int i = 0; i < 20; i++) {
+            memoryBlockList[i] = new MemoryBlock(i, i + 1);
+        }
+        LinkedList list = new LinkedList();
+        list.addFirst(memoryBlockList[0]);
+        System.out.println(list); //(0,1)
+        Node node = list.getNode(0);
+        System.out.println(node); //(0,1)
+        list.addFirst(memoryBlockList[1]);
+        System.out.println(list); //(1,2) , (0,1)
+        int indexTest = list.indexOf(memoryBlockList[0]);
+        System.out.println(indexTest); // 1
+        list.addLast(memoryBlockList[2]);
+        System.out.println(list); //(1,2) , (0,1), (2,3)
+		MemoryBlock toTest = list.getBlock(2);
+		System.out.println(toTest); // (2,3)
+        list.add(1, memoryBlockList[3]);
+        System.out.println(list); //(1,2) , (3,4) , (0,1), (2,3)
+        // list.add(5, memoryBlockList[3]);//error
+        // list.add(-1, memoryBlockList[3]);//error
+        list.remove(1);
+        System.out.println(list); //(1,2) , (0,1), (2,3)
+        list.remove(memoryBlockList[0]);
+        System.out.println(list); //(1,2) , (2,3)
+        // int t = list.getSize(); 
+        // list.remove(3); //error
+        // list.remove(-1);//error
+
 	}
 }

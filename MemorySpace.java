@@ -121,23 +121,30 @@ public class MemorySpace {
 	public void defrag() {
 		int i = 0;
 		while (i < freeList.getSize()) {
-			
 			int currentBA = freeList.getBlock(i).baseAddress;
 			int currentL = freeList.getBlock(i).length;
-			boolean merged = false;
-
-			for (int j = i + 1; j < freeList.getSize(); j++){
-				int checkBA = freeList.getBlock(j).baseAddress;
-				if (currentBA + currentL == checkBA) {
-					currentL += freeList.getBlock(j).length;
-					freeList.remove(freeList.getBlock(j));
-					j--;
-					merged = true;
+			MemoryBlock followingBlock = null;
+			int j = 0;
+			while (j < freeList.getSize()) {
+				if (j == i) {
+					j++;
 				}
-			}
-			freeList.getBlock(i).length = currentL;	
-			if (!merged) {
-				i++;
+				else {
+					if (freeList.getBlock(j).baseAddress == currentBA + currentL) {
+						followingBlock = freeList.getBlock(j);
+						break;
+					}
+					else {
+						j++;
+					}
+				}
+				if (followingBlock != null) {
+					freeList.getBlock(i).length += followingBlock.length;
+					freeList.remove(followingBlock);
+				}
+				else {
+					i++;
+				}
 			}
 		}
 	}
