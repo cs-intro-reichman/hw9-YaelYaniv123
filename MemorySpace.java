@@ -59,23 +59,29 @@ public class MemorySpace {
 	 */
 	public int malloc(int length) {		
 		ListIterator iterator = new ListIterator(this.freeList.getFirst());
+		MemoryBlock toChange = null;
+		int ans = -1;
 		while (iterator.hasNext()) {
-			int ans = iterator.next().baseAddress;
-			if (iterator.current.block.length >= length) {
-				MemoryBlock newMem = new MemoryBlock(iterator.current.block.baseAddress, length);
+			MemoryBlock currentBlock = iterator.next();
+			if (currentBlock.length >= length) {
+				MemoryBlock newMem = new MemoryBlock(currentBlock.baseAddress, length);
 				this.allocatedList.addLast(newMem);
-				if (iterator.current.block.length == length) {
-					this.freeList.remove(iterator.current.block);
+				ans = currentBlock.baseAddress;
+				toChange = currentBlock;
+				if (toChange.length == length){
+					this.freeList.remove(iterator.current);
 				}
 				else {
-					iterator.current.block.baseAddress = iterator.current.block.baseAddress + length;
-					iterator.current.block.length = iterator.current.block.length - length;
+					toChange.baseAddress += length;
+					toChange.length -= length;
 				}
-				return ans;
+				break;
 			}
-			iterator.next();
 		}
-		return -1;
+		if (toChange == null) {
+			return -1;
+		}	
+		return ans;
 	}
 
 	/**
@@ -113,7 +119,6 @@ public class MemorySpace {
 	 * In this implementation Malloc does not call defrag.
 	 */
 	public void defrag() {
-		/// TODO: Implement defrag test
-		//// Write your code here
+		
 	}
 }
