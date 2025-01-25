@@ -69,7 +69,7 @@ public class MemorySpace {
 				ans = currentBlock.baseAddress;
 				toChange = currentBlock;
 				if (toChange.length == length){
-					this.freeList.remove(iterator.current);
+					this.freeList.remove(currentBlock);
 				}
 				else {
 					toChange.baseAddress += length;
@@ -121,8 +121,8 @@ public class MemorySpace {
 	public void defrag() {
 		int i = 0;
 		while (i < freeList.getSize()) {
-			int currentBA = freeList.getBlock(i).baseAddress;
-			int currentL = freeList.getBlock(i).length;
+			int currentBA = freeList.getBlock(i).baseAddress; // 0
+			int currentL = freeList.getBlock(i).length; // 20
 			MemoryBlock followingBlock = null;
 			int j = 0;
 			while (j < freeList.getSize()) {
@@ -143,9 +143,10 @@ public class MemorySpace {
 					freeList.remove(followingBlock);
 				}
 				else {
-					i++;
+					j++;
 				}
 			}
+			i++;
 		}
 	}
 }

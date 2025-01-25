@@ -2630,7 +2630,7 @@ public class TestHandler {
     ///// Free tests /////
     private boolean freeTest1(){
         MemorySpace memorySpace = new MemorySpace(100);
-        String expectedText = "(0 , 100) \n";
+        String expectedText = "(0 , 100)\n";
         String expected = "true";
         String actual = "";
         try {
@@ -2661,7 +2661,7 @@ public class TestHandler {
 
     private boolean freeTest3(){
         MemorySpace memorySpace = new MemorySpace(100);
-        String expectedText = "\n(0 , 100) ";
+        String expectedText = "\n(0 , 100)";
         String expected = "true";
         String actual = "";
         try {
@@ -2676,7 +2676,7 @@ public class TestHandler {
 
     private boolean freeTest4(){
         MemorySpace memorySpace = new MemorySpace(100);
-        String expectedText = "(0 , 50) \n(50 , 50) ";
+        String expectedText = "(0 , 50) \n(50 , 50)";
         String expected = "true";
         String actual = "";
         try {
@@ -2693,7 +2693,7 @@ public class TestHandler {
 
     private boolean freeTest5(){
         MemorySpace memorySpace = new MemorySpace(100);
-        String expected1 = "(95 , 5) \n(0 , 20) (20 , 75) ";
+        String expected1 = "(95 , 5) \n(0 , 20) (20 , 75)";
         String expected2 = "(95 , 5) (10 , 10) \n(20 , 75) (0 , 10) ";
         String expected = "true";
         String actual = "";
@@ -2714,9 +2714,9 @@ public class TestHandler {
 
     private boolean freeTest6(){
         MemorySpace memorySpace = new MemorySpace(100);
-        String expected1 = "\n(0 , 5) (5 , 20) (25 , 20) (45 , 55) ";
-        String expected2 = "(0 , 5) (25 , 20) \n(5 , 20) (45 , 55) ";
-        String expected3 = "(0 , 5) (40 , 5) \n(5 , 20) (45 , 55) (25 , 15) ";
+        String expected1 = "\n(0 , 5) (5 , 20) (25 , 20) (45 , 55)";
+        String expected2 = "(0 , 5) (25 , 20) \n(5 , 20) (45 , 55)";
+        String expected3 = "(0 , 5) (40 , 5) \n(5 , 20) (45 , 55) (25 , 15)";
         String expected = "true";
         String actual = "";
         boolean actualB = true;
@@ -2783,7 +2783,7 @@ public class TestHandler {
 
     private boolean defragTest2(){
         MemorySpace memorySpace = new MemorySpace(100);
-        String expectedText = "\n(0 , 100) ";
+        String expectedText = "\n(0 , 100)";
         String expected = "true";
         String actual = "";
         try {
@@ -2798,8 +2798,8 @@ public class TestHandler {
 
     private boolean defragTest3(){
         MemorySpace memorySpace = new MemorySpace(100);
-        String expected1 = "\n(0 , 5) (5 , 20) (25 , 20) (45 , 55) ";
-        String expected2 = "(0 , 5) (5 , 20) \n(25 , 20) (45 , 55) ";
+        String expected1 = "\n(0 , 5) (5 , 20) (25 , 20) (45 , 55)";
+        String expected2 = "(0 , 5) (5 , 20) \n(25 , 20) (45 , 55)";
         String expected3 = "(0 , 25) \n(25 , 20) (45 , 55) ";
         String expected = "true";
         String actual = "";
@@ -2824,9 +2824,9 @@ public class TestHandler {
 
     private boolean defragTest4(){
         MemorySpace memorySpace = new MemorySpace(100);
-        String expected1 = "\n(0 , 5) (5 , 20) (25 , 20) (45 , 55) ";
-        String expected2 = "(0 , 5) (5 , 20) (25 , 20) \n(45 , 55) ";
-        String expected3 = "(0 , 45) \n(45 , 55) ";
+        String expected1 = "\n(0 , 5) (5 , 20) (25 , 20) (45 , 55)";
+        String expected2 = "(0 , 5) (5 , 20) (25 , 20) \n(45 , 55)";
+        String expected3 = "(0 , 45) \n(45 , 55)";
         String expected = "true";
         String actual = "";
         boolean actualB = true;
@@ -2850,9 +2850,9 @@ public class TestHandler {
 
     private boolean defragTest5(){
         MemorySpace memorySpace = new MemorySpace(100);
-        String expected1 = "\n(0 , 5) (5 , 20) (25 , 20) (45 , 55) ";
-        String expected2 = "(0 , 5) (25 , 20) \n(5 , 20) (45 , 55) ";
-        String expected3 = "(0 , 45) \n(45 , 55) ";
+        String expected1 = "\n(0 , 5) (5 , 20) (25 , 20) (45 , 55)";
+        String expected2 = "(0 , 5) (25 , 20) \n(5 , 20) (45 , 55)";
+        String expected3 = "(0 , 45) \n(45 , 55)";
         String expected = "true";
         String actual = "";
         boolean actualB = true;

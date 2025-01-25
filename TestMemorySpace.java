@@ -69,7 +69,7 @@ public class TestMemorySpace {
         MemorySpace memory = new MemorySpace(100);
         memory.malloc(20);
         memory.malloc(20);
-        int addr3 = memory.malloc(20);
+        int addr3 = memory.malloc(20); // 40
 
         memory.free(0);
         memory.free(addr3);

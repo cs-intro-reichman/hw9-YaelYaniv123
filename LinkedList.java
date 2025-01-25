@@ -244,7 +244,7 @@ public class LinkedList {
 		for (int i = 0; i < size; i++) {
 			linkedList = linkedList  + getNode(i).toString();
 		}
-		return linkedList;
+		return linkedList + " ";
 	}
 
 	public static void main(String[] args) {
