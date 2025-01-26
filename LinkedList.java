@@ -158,7 +158,8 @@ public class LinkedList {
 					"index must be between 0 and size");
 		}
 		if (getNode(index) == null) {
-			return null;
+			throw new IllegalArgumentException(
+					"index must be between 0 and size");
 		}
 		return getNode(index).block;
 	}	

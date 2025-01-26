@@ -95,14 +95,17 @@ public class MemorySpace {
      */
     public void free(int address) {
         ListIterator iterator = new ListIterator(this.allocatedList.getFirst());
-        while (iterator.hasNext()) {
-            if (iterator.current.block.baseAddress == address) {
+        MemoryBlock toRemove = null;
+		while (iterator.hasNext()) {
+			if (iterator.current.block.baseAddress == address) {
                 this.freeList.addLast(iterator.current.block);
-                this.allocatedList.remove(iterator.current.block);
+                toRemove = iterator.current.block;
+				//this.allocatedList.remove(iterator.current.block);
                 break;
             }
-            iterator.next();
+			iterator.next();
         }
+		allocatedList.remove(toRemove);
         
     }
     
