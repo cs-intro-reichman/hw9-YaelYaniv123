@@ -2630,7 +2630,7 @@ public class TestHandler {
     ///// Free tests /////
     private boolean freeTest1(){
         MemorySpace memorySpace = new MemorySpace(100);
-        String expectedText = "(0 , 100)\n";
+        String expectedText = "(0 , 100) \n";
         String expected = "true";
         String actual = "";
         try {

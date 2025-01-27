@@ -94,18 +94,22 @@ public class MemorySpace {
      *            the starting address of the block to freeList
      */
     public void free(int address) {
-        ListIterator iterator = new ListIterator(this.allocatedList.getFirst());
-        MemoryBlock toRemove = null;
+        if (allocatedList.getSize() == 0) {
+			throw new IllegalArgumentException(
+					"index must be between 0 and size");
+		}
+		ListIterator iterator = new ListIterator(this.allocatedList.getFirst());
+        //MemoryBlock toRemove = null;
 		while (iterator.hasNext()) {
 			if (iterator.current.block.baseAddress == address) {
                 this.freeList.addLast(iterator.current.block);
-                toRemove = iterator.current.block;
-				//this.allocatedList.remove(iterator.current.block);
+                //toRemove = iterator.current.block;
+				this.allocatedList.remove(iterator.current.block);
                 break;
             }
 			iterator.next();
         }
-		allocatedList.remove(toRemove);
+		//allocatedList.remove(toRemove);
         
     }
     
